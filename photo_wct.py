@@ -11,7 +11,7 @@ from models import VGGEncoder, VGGDecoder
 
 
 class PhotoWCT(nn.Module):
-    def __init__(self):
+    def __init__(self, min_mask=0):
         super(PhotoWCT, self).__init__()
         self.e1 = VGGEncoder(1)
         self.d1 = VGGDecoder(1)
@@ -21,7 +21,8 @@ class PhotoWCT(nn.Module):
         self.d3 = VGGDecoder(3)
         self.e4 = VGGEncoder(4)
         self.d4 = VGGDecoder(4)
-    
+        self.min_mask = min_mask
+
     def transform(self, cont_img, styl_img, cont_seg, styl_seg):
         self.__compute_label_info(cont_seg, styl_seg)
 
@@ -91,7 +92,7 @@ class PhotoWCT(nn.Module):
                     continue
                 cont_mask = np.where(t_cont_seg.reshape(t_cont_seg.shape[0] * t_cont_seg.shape[1]) == l)
                 styl_mask = np.where(t_styl_seg.reshape(t_styl_seg.shape[0] * t_styl_seg.shape[1]) == l)
-                if cont_mask[0].size <= 0 or styl_mask[0].size <= 0:
+                if cont_mask[0].size <= self.min_mask or styl_mask[0].size <= self.min_mask:
                     continue
 
                 cont_indi = torch.LongTensor(cont_mask[0])

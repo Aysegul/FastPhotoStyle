@@ -15,6 +15,7 @@ Licensed under the CC BY-NC-SA 4.0 license (https://creativecommons.org/licenses
  
  | Date     | News |
  |----------|--------------|
+ |2018-09-24| Add [domain stylization tutorial](DOMAIN_STYLIZATION.md) showing how to use FastPhotoStyle algorithm for synthetic to real domain adaptation.|
  |2018-07-25| Migrate to pytorch 0.4.0. For pytorch 0.3.0 user, check out [FastPhotoStyle for pytorch 0.3.0](https://github.com/NVIDIA/FastPhotoStyle/releases/tag/f33e07f). |
  |          | Add a [tutorial](TUTORIAL.md) showing 3 ways of using the FastPhotoStyle algorithm.|
  |2018-07-10| Our paper is accepted by the ECCV 2018 conference!!! | 
